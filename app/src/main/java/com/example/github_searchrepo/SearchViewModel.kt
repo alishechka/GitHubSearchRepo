@@ -16,6 +16,7 @@ class SearchViewModel(val repo: SearchRepository) : ViewModel() {
         compositeDisposable.add(
             repo.getData(s).subscribe({ i -> searchLiveDataSuccess.value = i },
                 { e -> searchLiveDataError.value = e.message })
+
         )
     }
 }

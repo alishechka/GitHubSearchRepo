@@ -8,5 +8,5 @@ import retrofit2.http.Query
 
 interface SearchClient {
     @GET(END_POINT_SEARCH_REPO)
-    fun getSearchRepo(@Query("q") search: String) :Observable<RepositoriesModel>
+    fun getSearchRepo(@Query("q") search: String): Observable<RepositoriesModel>
 }

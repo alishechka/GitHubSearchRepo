@@ -10,7 +10,7 @@ class SearchRepositoriesImpl : SearchRepository {
 
     override fun getData(searchString: String): Observable<RepositoriesModel> {
         return client.getSearchRepo(searchString)
-            .observeOn(Schedulers.io())
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 }
