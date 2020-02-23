@@ -12,6 +12,7 @@ import com.example.github_searchrepo.adapter.SearchAdapter
 import com.example.github_searchrepo.newtwork.SearchRepositoriesImpl
 import kotlinx.android.synthetic.main.activity_main.*
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 
 const val TAG = "MainActivity"
 
@@ -26,13 +27,14 @@ class MainActivity : AppCompatActivity() {
 
 
         viewModel.searchLiveDataSuccess.observe(this@MainActivity, Observer {
+            tv_show_count.text = it.total_count.toString()
             rv_display_search.adapter = SearchAdapter(it)
             rv_display_search.layoutManager = LinearLayoutManager(this@MainActivity)
+
         })
 
         et_search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -41,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 viewModel.getSearchRepository(s.toString())
-
             }
         })
 

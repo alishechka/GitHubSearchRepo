@@ -19,4 +19,5 @@ class SearchViewModel(val repo: SearchRepository) : ViewModel() {
 
         )
     }
+
 }
