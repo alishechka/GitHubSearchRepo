@@ -1,6 +1,6 @@
 package com.example.github_searchrepo
 
-import RepositoriesModel
+import com.example.github_searchrepo.model.RepositoriesModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.github_searchrepo.newtwork.SearchRepository

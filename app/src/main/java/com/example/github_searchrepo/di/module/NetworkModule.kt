@@ -1,5 +1,7 @@
 package com.example.github_searchrepo.di.module
 
+import com.example.github_searchrepo.di.scope.ActivityScope
+import com.example.github_searchrepo.misc.BASE_URL
 import com.example.github_searchrepo.newtwork.SearchClient
 import dagger.Module
 import dagger.Provides
@@ -13,8 +15,11 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
 
     }
 

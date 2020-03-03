@@ -1,3 +1,5 @@
+package com.example.github_searchrepo.model
+
 import com.google.gson.annotations.SerializedName
 
 /*

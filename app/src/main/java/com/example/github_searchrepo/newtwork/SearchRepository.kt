@@ -1,6 +1,6 @@
 package com.example.github_searchrepo.newtwork
 
-import RepositoriesModel
+import com.example.github_searchrepo.model.RepositoriesModel
 import io.reactivex.Observable
 
 interface SearchRepository {

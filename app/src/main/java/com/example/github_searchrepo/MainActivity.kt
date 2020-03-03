@@ -1,10 +1,8 @@
 package com.example.github_searchrepo
 
-import RepositoriesModel
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,18 +10,34 @@ import com.example.github_searchrepo.adapter.SearchAdapter
 import com.example.github_searchrepo.newtwork.SearchRepositoriesImpl
 import kotlinx.android.synthetic.main.activity_main.*
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
+import com.example.github_searchrepo.di.component.DaggerAppComponent
+import com.example.github_searchrepo.di.component.DaggerSearchComponent
+import com.example.github_searchrepo.di.module.SearchModule
+import dagger.internal.DaggerCollections
+import javax.inject.Inject
 
 const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
+//    @Inject
+//    lateinit var searchViewModelFactory: SearchViewModelFactory
+
+    @Inject
+    lateinit var viewModel: SearchViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewModel = ViewModelProvider(this, SearchViewModelFactory(SearchRepositoriesImpl()))
-            .get(SearchViewModel::class.java)
+        DaggerSearchComponent
+            .builder()
+            .appComponent((application as MyApp).component())
+            .searchModule(SearchModule(this))
+            .build().inject(this)
+
+//        val viewModel = ViewModelProvider(this, searchViewModelFactory)
+//            .get(SearchViewModel::class.java)
 
 
         viewModel.searchLiveDataSuccess.observe(this@MainActivity, Observer {

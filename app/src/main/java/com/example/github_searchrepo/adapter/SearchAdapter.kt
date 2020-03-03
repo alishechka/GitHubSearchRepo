@@ -1,12 +1,11 @@
 package com.example.github_searchrepo.adapter
 
-import RepositoriesModel
+import com.example.github_searchrepo.model.RepositoriesModel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.github_searchrepo.R
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.search_repo_item.view.*
 
 class SearchAdapter(private val models: RepositoriesModel) :
