@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.github_searchrepo.newtwork.SearchRepository
 import io.reactivex.disposables.CompositeDisposable
 
-class SearchViewModel(val repo: SearchRepository) : ViewModel() {
+class SearchViewModel(private val repo: SearchRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     val searchLiveDataSuccess = MutableLiveData<RepositoriesModel>()

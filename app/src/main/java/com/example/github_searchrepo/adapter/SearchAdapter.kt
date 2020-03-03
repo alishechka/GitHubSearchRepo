@@ -9,7 +9,7 @@ import com.example.github_searchrepo.R
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.search_repo_item.view.*
 
-class SearchAdapter(val models: RepositoriesModel) :
+class SearchAdapter(private val models: RepositoriesModel) :
     RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
